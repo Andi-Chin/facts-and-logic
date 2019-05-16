@@ -6,8 +6,17 @@ public class Gate {
     private GBWrapper inp1;
     private GBWrapper inp2;
 
+    // constructor function for gates taking 1 input, eg: not gate
+    public Gate(GateType name, GBWrapper inp1) {
+        this.name = name;
+        this.inp1 = inp1;
+        // this will just be the default. Let's hope that it doesn't cause errors
+        this.inp2 = new GBWrapper(false);
 
-    public Gate(GateType name, GBWrapper inp1, GBWrapper inp2) {  // for not gate put false for inp2
+    }
+
+    // contructor function for gates that take 2 inputs
+    public Gate(GateType name, GBWrapper inp1, GBWrapper inp2) {
         this.name = name;
         this.inp1 = inp1;
         this.inp2 = inp2;
@@ -25,6 +34,8 @@ public class Gate {
             return inp1 || inp2;
         }else if (gateName == GateType.NAND) {  // in this case just make inp2 false
             return !(inp1 && inp2);
+        }else if (gateName == GateType.NOT) {
+            return !inp1;
         }
         else {
             // FIXME jk you don't need to fix this, unless the error occurs
