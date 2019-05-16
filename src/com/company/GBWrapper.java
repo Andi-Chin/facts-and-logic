@@ -19,7 +19,7 @@ public class GBWrapper {
         if (this.isGate) {
             return new GBWrapper(this.gate);
         }else {
-            return new GBWrapper(this.gate);
+            return new GBWrapper(this.bool);
         }
     }
 

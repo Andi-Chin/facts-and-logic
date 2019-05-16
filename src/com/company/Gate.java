@@ -2,11 +2,12 @@ package com.company;
 
 
 public class Gate {
-    private String name;
+    private GateType name;
     private GBWrapper inp1;
     private GBWrapper inp2;
 
-    public Gate(String name, GBWrapper inp1, GBWrapper inp2) {
+
+    public Gate(GateType name, GBWrapper inp1, GBWrapper inp2) {  // for not gate put false for inp2
         this.name = name;
         this.inp1 = inp1;
         this.inp2 = inp2;
@@ -17,15 +18,17 @@ public class Gate {
     }
 
 
-    public static boolean evaluateBool(String gateName, boolean inp1, boolean inp2) {
-        if (gateName.equals("and")) {
+    public static boolean evaluateBool(GateType gateName, boolean inp1, boolean inp2) {
+        if (gateName == GateType.AND) {
             return inp1 && inp2;
-        }else if (gateName.equals("or")) {
+        }else if (gateName == GateType.OR) {
             return inp1 || inp2;
-        }else if (gateName.equals("nand")) {  // in this case just make inp2 false
+        }else if (gateName == GateType.NAND) {  // in this case just make inp2 false
             return !(inp1 && inp2);
-        }else {
+        }
+        else {
             // FIXME jk you don't need to fix this, unless the error occurs
+            System.out.println(gateName);
             throw new Error("aaaaaaaaaaaaa evalbool error");
         }
     }
@@ -57,11 +60,11 @@ public class Gate {
     }
 
 
-    public String getName() {
+    public GateType getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(GateType name) {
         this.name = name;
     }
 
